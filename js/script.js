@@ -2,7 +2,11 @@
 
 
 function titleClickHandler(event) {
+    event.preventDefault();
+
     const clickedElement = this;
+
+
     console.log('Link was clicked!');
 
     /*[DONE] remove class 'active' from all article links  */
@@ -14,21 +18,28 @@ function titleClickHandler(event) {
     }
 
     /* add class 'active' to the clicked link */
-    console.log('clickedElement:', clickedElement);
+
     clickedElement.classList.add('active');
 
     /*[DONE] remove class 'active' from all articles */
     const activeArticles = document.querySelectorAll('article.active');
     for (let activeArticle of activeArticles) {
         activeArticle.classList.remove('active');
-        console.log('zniklo');
+
     }
 
     /* get 'href' attribute from the clicked link */
+    let articleSelector = clickedElement.getAttribute("href");
+    console.log(articleSelector);
 
     /* find the correct article using the selector (value of 'href' attribute) */
+    const targetArticle = document.querySelector(articleSelector);
+    console.log(targetArticle);
 
     /* add class 'active' to the correct article */
+    targetArticle.classList.add('active');
+    console.log(targetArticle)
+
 }
 
 const links = document.querySelectorAll('.titles a');
